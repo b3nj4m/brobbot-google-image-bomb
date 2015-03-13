@@ -1,6 +1,8 @@
 // Description:
 //   Get multiple image results from google
 
+var _ = require('lodash');
+
 module.exports = function(robot) {
   robot.helpCommand("brobbot bomb [me] `query`", "Googles `query` and returns 1st result's URL.");
   robot.helpCommand("brobbot `query`bomb [me] `query`", "Googles `query` and tries to return the first animated GIF result.");
@@ -33,10 +35,21 @@ function imageMe(msg, query, cb) {
       images = images.responseData ? images.responseData.results : null;
 
       if (images && images.length > 0) {
-        image = msg.random(images);
-        cb(ensureImageExtension(image.unescapedUrl));
+        cb(_.map(randomItems(images, 10), ensureImageExtension))
       }
     });
+}
+
+function randomItems(list, size) {
+  var ret = [];
+
+  for (var i = 0; i < size && list.length > 0; i++) {
+    idx = _.random(list.length - 1);
+    ret.push(list[idx]);
+    list.splice(idx, 1);
+  }
+
+  return ret;
 }
 
 function ensureImageExtension(url) {

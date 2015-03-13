@@ -21,5 +21,8 @@
   "homepage": "https://github.com/b3nj4m/brobbot-google-image-bomb",
   "peerDependencies": {
     "brobbot": "4.x - 5.x"
+  },
+  "dependencies": {
+    "lodash": "^3.5.0"
   }
 }
