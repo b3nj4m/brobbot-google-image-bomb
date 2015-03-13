@@ -8,14 +8,14 @@ module.exports = function(robot) {
   robot.helpCommand("brobbot `query`bomb [me] `query`", "Googles `query` and tries to return the first animated GIF result.");
 
   robot.respond(/^bomb( me)? (.*)/i, function(msg) {
-    imageMe(msg, msg.match[2], function(url) {
-      msg.send(url);
+    imageMe(msg, msg.match[2], function(urls) {
+      msg.send.apply(msg, urls);
     });
   });
 
   robot.respond(/^([^\s]+)bomb( me)?/i, function(msg) {
-    imageMe(msg, msg.match[1], function(url) {
-      msg.send(url);
+    imageMe(msg, msg.match[1], function(urls) {
+      msg.send.apply(msg, urls);
     });
   });
 };
@@ -35,7 +35,7 @@ function imageMe(msg, query, cb) {
       images = images.responseData ? images.responseData.results : null;
 
       if (images && images.length > 0) {
-        cb(_.map(randomItems(images, 10), ensureImageExtension))
+        cb(_.map(_.pluck(randomItems(images, 10), 'unescapedUrl'), ensureImageExtension))
       }
     });
 }
