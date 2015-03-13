@@ -1,0 +1,25 @@
+{
+  "name": "brobbot-google-image-bomb",
+  "version": "1.0.0",
+  "description": "Brobbot script to bomb the room with multiple image results",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/b3nj4m/brobbot-google-image-bomb"
+  },
+  "keywords": [
+    "brobbot"
+  ],
+  "author": "Ben Robbins <ben.robbins@gmail.com> (https://b3nj4m.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/b3nj4m/brobbot-google-image-bomb/issues"
+  },
+  "homepage": "https://github.com/b3nj4m/brobbot-google-image-bomb",
+  "peerDependencies": {
+    "brobbot": "4.x - 5.x"
+  }
+}
