@@ -1,6 +1,6 @@
 {
   "name": "brobbot-google-image-bomb",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Brobbot script to bomb the room with multiple image results",
   "main": "index.js",
   "scripts": {
