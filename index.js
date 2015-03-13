@@ -5,7 +5,7 @@ var _ = require('lodash');
 
 module.exports = function(robot) {
   robot.helpCommand("brobbot bomb [me] `query`", "Googles `query` and returns 1st result's URL.");
-  robot.helpCommand("brobbot `query`bomb [me] `query`", "Googles `query` and tries to return the first animated GIF result.");
+  robot.helpCommand("brobbot `query`bomb [me]", "Googles `query` and tries to return the first animated GIF result.");
 
   robot.respond(/^bomb( me)? (.*)/i, function(msg) {
     imageMe(msg, msg.match[2], function(urls) {
