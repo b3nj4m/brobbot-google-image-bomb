@@ -1,11 +1,16 @@
 // Description:
 //   Get multiple image results from google
+//
+// Configuration:
+//   BROBBOT_GOOGLE_IMAGE_BOMB_REFERER - the URL to pass to the Google API
 
 var _ = require('lodash');
 
 module.exports = function(robot) {
   robot.helpCommand("brobbot bomb [me] `query`", "Googles `query` and returns several resulting URLs.");
   robot.helpCommand("brobbot `query`bomb [me]", "Googles `query` and returns several resulting URLs.");
+
+  var REFERER = process.env.BROBBOT_GOOGLE_IMAGE_BOMB_REFERER || 'https://npmjs.org/package/brobbot-google-image-bomb';
 
   robot.respond(/^bomb( me)? (.*)/i, function(msg) {
     imageMe(msg, msg.match[2], function(urls) {
@@ -30,6 +35,7 @@ function imageMe(msg, query, cb) {
 
   msg.http('http://ajax.googleapis.com/ajax/services/search/images')
     .query(q)
+    .header('Referer', REFERER)
     .get()(function(err, res, body) {
       var images = JSON.parse(body);
       images = images.responseData ? images.responseData.results : null;

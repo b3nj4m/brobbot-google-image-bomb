@@ -19,3 +19,13 @@ brobbot <query>bomb [me]
 ```
 
 Respond with some image results matching `query`.
+
+## Configuration
+
+### Referer
+
+```bash
+BROBBOT_GOOGLE_IMAGE_BOMB_REFERER=url
+```
+
+The referer URL to be passed to the Google API (see https://developers.google.com/image-search/v1/jsondevguide).
