@@ -6,11 +6,11 @@
 
 var _ = require('lodash');
 
+var REFERER = process.env.BROBBOT_GOOGLE_IMAGE_BOMB_REFERER || 'https://npmjs.org/package/brobbot-google-image-bomb';
+
 module.exports = function(robot) {
   robot.helpCommand("brobbot bomb [me] `query`", "Googles `query` and returns several resulting URLs.");
   robot.helpCommand("brobbot `query`bomb [me]", "Googles `query` and returns several resulting URLs.");
-
-  var REFERER = process.env.BROBBOT_GOOGLE_IMAGE_BOMB_REFERER || 'https://npmjs.org/package/brobbot-google-image-bomb';
 
   robot.respond(/^bomb( me)? (.*)/i, function(msg) {
     imageMe(msg, msg.match[2], function(urls) {
